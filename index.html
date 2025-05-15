@@ -1,49 +1,63 @@
-<!DOCTYPE html>
 
+   <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página Interactiva</title>
 
   <!-- Íconos Font Awesome -->
-
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #ffffff;
-      color: #000000;
+      background: #000000;
+      color: #fff;
     }
 
+    /* === BANNER HERO CON IMAGEN VISIBLE === */
     header {
-      background: url('images/banner.jpg') no-repeat center center;
-      background-size: cover;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
       position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    header::after {
-      content: "";
+    header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
+      top: 0;
+      left: 0;
       z-index: 1;
+      filter: brightness(0.5);
     }
 
-    header h1, header p {
+    header .hero-text {
       position: relative;
       z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: fadeIn 2s ease-in-out;
     }
 
     header h1 {
+      font-size: 3em;
       margin: 0;
-      font-size: 2.8em;
+    }
+
+    header p {
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-60%); }
+      to { opacity: 1; transform: translateY(-50%); }
     }
 
     .content {
@@ -77,7 +91,7 @@
       gap: 10px;
       font-size: 1.8em;
       margin-bottom: 15px;
-      color: #000000;
+      color: #ffffff;
     }
 
     .section-title i {
@@ -95,50 +109,86 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: #c997b4;
-      color: #000000;
+      background: #e60c0c;
+      color: #1cb6b6;
       font-size: 0.85em;
     }
-  </style>
 
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      header p {
+        font-size: 1em;
+      }
+
+      .pdf-container iframe {
+        height: 500px;
+      }
+
+      .video-container iframe {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.6em;
+      }
+
+      header p {
+        font-size: 0.9em;
+      }
+
+      .pdf-container iframe {
+        height: 400px;
+      }
+
+      .video-container iframe {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- BANNER HERO -->
   <header>
-    <h1> ANGELA A PUNTO DE CREAR</h1>
-    <p>PLATAFORMA EDUCATIVA</p>
+    <img src="banner.jpg" alt="Banner educativo" />
+    <div class="hero-text">
+      <h1>BY DANIELA PRADO</h1>
+      <p>Contenido educativo</p>
+    </div>
   </header>
 
   <div class="content">
 
-```
     <!-- Sección PDF -->
     <div class="section pdf-container">
       <div class="section-title">
         <i class="fas fa-file-pdf"></i> 
-        <h2>Documento PDF </h2>
+        <h2>Documento PDF Informativo</h2>
       </div>
       <iframe src="mi_archivo.pdf"></iframe>
       <div class="copyright">© Derechos del PDF pertenecen a sus respectivos autores.</div>
     </div>
 
-<!-- Sección Video de YouTube -->
-<div class="section video-container">
-  <div class="section-title">
-    <i class="fab fa-youtube"></i>
-    <h2>Evidencia</h2>
-  </div>
-  <iframe 
-    src="https://www.youtube.com/embed/Qtv0DqqgFpM?si=ayOURCrWnRI7_VoO" 
-    title="YouTube video player"
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen>
-  </iframe>
-  <div class="copyright">© Video propiedad de YouTube y del creador original.</div>
-</div>
-```
+    <!-- Sección Video de YouTube -->
+    <div class="section video-container">
+      <div class="section-title">
+        <i class="fab fa-youtube"></i>
+        <h2>Video Relacionado</h2>
+      </div>
+      <iframe 
+        src="https://www.youtube.com/embed/QcxAqZabICY?si=THIViqI3GIGIUM8m" 
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <div class="copyright">© Video propiedad de YouTube y del creador original.</div>
+    </div>
 
   </div>
 
